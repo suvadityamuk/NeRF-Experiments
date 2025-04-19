@@ -26,7 +26,7 @@ NeRF is a method that represents a 3D scene as a continuous volumetric function 
 - Base NeRF implementation
 - Optimizations with mixed precision training
 - Distributed training with DDP (DistributedDataParallel)
-- Quantization approaches using BitNeRF
+- Quantization approaches using BitNet training [as introduced in this paper](https://arxiv.org/abs/2504.12285)
 
 ## Weights & Biases Dashboard 📊
 
