@@ -1,29 +1,25 @@
-# NeRF Experiments
+# NeRF Experiments 🌟
 
-<div style="display: flex; justify-content: space-between; text-align: center;">
-  <div style="width: 30%;">
+<h2 align="center">Neural Radiance Field Experiments 🧠💫</h2>
+
+<div align="center">
+  <div style="display: inline-block; width: 30%; text-align: center; margin: 0 10px;">
     <h3>NeRF-Base</h3>
-    <video width="100%" autoplay loop muted>
-      <source src="media/rgb_video_nerf_base.mp4" type="video/mp4">
-    </video>
+    <img src="./media/rgb_video_nerf_base.gif" alt="NeRF Base GIF" width="100%">
   </div>
-  <div style="width: 30%;">
+  <div style="display: inline-block; width: 30%; text-align: center; margin: 0 10px;">
     <h3>BitNeRF-Base</h3>
-    <video width="100%" autoplay loop muted>
-      <source src="media/rgb_video_bitnerf_base.mp4" type="video/mp4">
-    </video>
+    <img src="./media/rgb_video_bitnerf_base.gif" alt="BitNeRF Base GIF" width="100%">
   </div>
-  <div style="width: 30%;">
+  <div style="display: inline-block; width: 30%; text-align: center; margin: 0 10px;">
     <h3>BitNeRF-2xT4s-DDP</h3>
-    <video width="100%" autoplay loop muted>
-      <source src="media/rgb_video_bitnerf_2xt4_ddp.mp4" type="video/mp4">
-    </video>
+    <img src="./media/rgb_video_bitnerf_2xt4_ddp.gif" alt="BitNeRF DDP GIF" width="100%">
   </div>
 </div>
 
 This repository contains several implementations and optimizations of Neural Radiance Fields (NeRF) using PyTorch. The experiments explore different training configurations, optimization techniques, and quantization approaches for NeRF models.
 
-## Overview
+## Overview 🔍
 
 NeRF is a method that represents a 3D scene as a continuous volumetric function using a neural network. This implementation includes:
 
@@ -32,30 +28,30 @@ NeRF is a method that represents a 3D scene as a continuous volumetric function 
 - Distributed training with DDP (DistributedDataParallel)
 - Quantization approaches using BitNeRF
 
-## Weights & Biases Dashboard
+## Weights & Biases Dashboard 📊
 
 Take a look at my [training logs here!](https://wandb.ai/suvadityamuk/nerf)
 
-## Project Structure
+## Project Structure 📁
 
-- `nerf.py` - Basic NeRF implementation
-- `bitnerf.py` - Quantization-friendly NeRF implementation with RMSNorm
-- `bitnerf_ddp.py` - DDP-compatible BitNeRF implementation
-- `dataset.py` - Dataset handling for NeRF training
-- `utils.py` - Utility functions for rays, transforms, logging, etc.
-- `configs.py` - Configuration parameters for different experiments
-- `exp1.py` through `exp6.py` - Different experiment scripts
+- [`nerf.py`](nerf.py) - Basic NeRF implementation
+- [`bitnerf.py`](bitnerf.py) - Quantization-friendly NeRF implementation with RMSNorm
+- [`bitnerf_ddp.py`](bitnerf_ddp.py) - DDP-compatible BitNeRF implementation
+- [`dataset.py`](dataset.py) - Dataset handling for NeRF training
+- [`utils.py`](utils.py) - Utility functions for rays, transforms, logging, etc.
+- [`configs.py`](configs.py) - Configuration parameters for different experiments
+- [`exp1.py`](exp1.py) through [`exp6.py`](exp6.py) - Different experiment scripts
 
-## Experiments
+## Experiments 🧪
 
-1. **exp1.py** - Base NeRF implementation on single GPU
-2. **exp2.py** - NeRF with mixed precision (BF16) training
-3. **exp3.py** - NeRF with higher number of samples and regularization
-4. **exp4.py** - BitNeRF with quantization-aware training
-5. **exp5.py** - Multi-GPU training using DistributedDataParallel
-6. **exp6.py** - BitNeRF with DDP and quantization
+1. **[`exp1.py`](exp1.py)** - Base NeRF implementation on single GPU
+2. **[`exp2.py`](exp2.py)** - NeRF with mixed precision (BF16) training
+3. **[`exp3.py`](exp3.py)** - NeRF with higher number of samples and regularization
+4. **[`exp4.py`](exp4.py)** - BitNeRF with quantization-aware training
+5. **[`exp5.py`](exp5.py)** - Multi-GPU training using DistributedDataParallel
+6. **[`exp6.py`](exp6.py)** - BitNeRF with DDP and quantization
 
-## Features
+## Features ✨
 
 - Positional encoding for better high-frequency detail representation
 - Ray sampling and volumetric rendering
@@ -64,14 +60,14 @@ Take a look at my [training logs here!](https://wandb.ai/suvadityamuk/nerf)
 - Quantization-aware training
 - RMSNorm for improved quantization stability
 
-## Requirements
+## Requirements 🛠️
 
 - PyTorch
 - CUDA-compatible GPU
 - Distributed training support
 - numpy, tqdm
 
-## Setting up 2 x T4 from Kaggle onto Colab
+## Setting up 2 x T4 from Kaggle onto Colab 🚀
 
 1. Navigate to [Kaggle](https://www.kaggle.com/) and open a [new Code notebook](https://www.kaggle.com/code)
 2. Go to Settings > Accelerator Preferences > GPU T4 x2
@@ -80,7 +76,7 @@ Take a look at my [training logs here!](https://wandb.ai/suvadityamuk/nerf)
 5. Choose "Connect to a local runtime" and enter the copied URL from Kaggle into it. Click "Connect".
 6. You should now have the GPUs connected to your Colab system!
 
-## Usage
+## Usage 🔧
 
 Each experiment script can be executed directly:
 
@@ -98,7 +94,7 @@ The training process will:
 
 Make changes to the WandB configuration to set up your own WandB workspace and account as per your requirement.
 
-## Model Architecture
+## Model Architecture 🏗️
 
 The NeRF model architecture includes:
 - Positional encoding input
@@ -109,7 +105,7 @@ The NeRF model architecture includes:
 
 BitNeRF additionally uses RMSNorm for better quantization compatibility.
 
-## References
+## References 📚
 
 This implementation borrows heavily (almost completely) from [this Keras.io tutorial](http://keras.io/examples/vision/nerf) written by [Aritra Roy Gosthipaty](https://x.com/ariG23498/) and [Ritwik Raha](https://x.com/ritwik_raha). I also refer to the following resources:
 
@@ -118,7 +114,7 @@ This implementation borrows heavily (almost completely) from [this Keras.io tuto
 3. [BitNet Training APIs - torchao Prototypes](https://github.com/pytorch/ao/blob/main/torchao/prototype/quantized_training/bitnet.py)
 4. [PyTorch documentation on DistributedDataParallel](https://pytorch.org/docs/stable/notes/ddp.html)
 
-## Citation
+## Citation 📝
 
 If you use this code or find this work helpful in your research, please consider citing:
 
@@ -138,10 +134,10 @@ APA format:
 Mukherjee, S. (2025). NeRF Experiments: Implementations and Optimizations of Neural Radiance Fields. GitHub. https://github.com/suvadityamuk/nerf-experiments
 ```
 
-## Contributing
+## Contributing 👥
 
 Contributions are welcome! Feel free to extend these results or scripts!
 
-## License
+## License ⚖️
 
 [MIT](https://choosealicense.com/licenses/mit/)
