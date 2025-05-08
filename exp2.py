@@ -28,7 +28,6 @@ def train(
     config,
     epochs=100,
     loss_fn=nn.MSELoss(),
-    lambda_l2=0.1,
 ):
     psnr_loss = PSNRLoss()
     scaler = torch.amp.GradScaler("cuda")

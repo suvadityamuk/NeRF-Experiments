@@ -29,7 +29,6 @@ def train(
     config,
     epochs=100,
     loss_fn=nn.MSELoss(),
-    lambda_l2=0.1,
 ):
     psnr_loss = PSNRLoss()
 
@@ -221,8 +220,8 @@ def execute(config):
     model = NeRF(device=device, emb_dim=config["EMB_DIM"], config=config)
     model = torch.compile(model, fullgraph=True)
 
-    for i in range(3):  # Warm-up
-        images, rays, focal = next(iter(train_loader))
+    for _ in range(3):  # Warm-up
+        _, rays, _ = next(iter(train_loader))
         rays_flat, t = rays
         rays_flat, t = rays_flat.to(device), t.to(device)
         model.render_rgb_depth(rays_flat, t)

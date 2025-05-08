@@ -32,7 +32,6 @@ def train(
     config,
     epochs=100,
     loss_fn=nn.MSELoss(),
-    lambda_l2=0.1,
     rank=0,
 ):
     psnr_loss = PSNRLoss()
