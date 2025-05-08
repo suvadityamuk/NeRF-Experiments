@@ -13,7 +13,7 @@ exp1_config = {
     "EPOCHS": 50,
     "AMSGRAD": False,
     "FUSED_OPTIM": False,
-    "EMB_DIM": 256
+    "EMB_DIM": 256,
 }
 
 exp2_config = {
@@ -28,13 +28,13 @@ exp2_config = {
     "EPOCHS": 50,
     "AMSGRAD": True,
     "FUSED_OPTIM": True,
-    "EMB_DIM": 256
+    "EMB_DIM": 256,
 }
 
 exp3_config = {
     "NUM_GPUS": 1,
     "POS_ENCODE_DIMS": 16,
-    "NUM_SAMPLES": NUM_SAMPLES, # Remember to change the global variable at the top of this notebook
+    "NUM_SAMPLES": NUM_SAMPLES,  # Remember to change the global variable at the top of this notebook
     "BATCH_SIZE": 8,
     "H": 100,
     "W": 100,
@@ -43,7 +43,7 @@ exp3_config = {
     "EPOCHS": 50,
     "AMSGRAD": True,
     "FUSED_OPTIM": True,
-    "EMB_DIM": 256
+    "EMB_DIM": 256,
 }
 
 exp4_config = {
@@ -73,7 +73,7 @@ exp5_config = {
     "EPOCHS": 50,
     "AMSGRAD": False,
     "FUSED_OPTIM": False,
-    "EMB_DIM": 256
+    "EMB_DIM": 256,
 }
 
 exp6_config = {
@@ -88,5 +88,5 @@ exp6_config = {
     "EPOCHS": 50,
     "AMSGRAD": False,
     "FUSED_OPTIM": False,
-    "EMB_DIM": 256
+    "EMB_DIM": 256,
 }

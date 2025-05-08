@@ -4,6 +4,7 @@ import numpy as np
 from configs import NUM_SAMPLES
 import torch.nn.functional as F
 
+
 class NerfDataset(torch.utils.data.Dataset):
     def __init__(self, root_path, transform, target_transform):
         super(NerfDataset, self).__init__()
@@ -19,7 +20,7 @@ class NerfDataset(torch.utils.data.Dataset):
         self.images = torch.from_numpy(self._raw_images)
         self.poses = torch.from_numpy(self._raw_poses)
 
-        self.height = self.images.shape[1] # assuming (B, H, W, C)
+        self.height = self.images.shape[1]  # assuming (B, H, W, C)
         self.width = self.images.shape[2]
         self.focal_length = torch.from_numpy(raw_npz["focal"])
 
@@ -34,7 +35,7 @@ class NerfDataset(torch.utils.data.Dataset):
             height=self.height,
             width=self.width,
             focal_length=self.focal_length,
-            pose=pose
+            pose=pose,
         )
         (rays_flat, t) = render_flat_rays(
             ray_origins=ray_origins,
@@ -42,7 +43,7 @@ class NerfDataset(torch.utils.data.Dataset):
             near_bound=2.0,
             far_bound=6.0,
             num_samples=NUM_SAMPLES,
-            rand=True
+            rand=True,
         )
         return (rays_flat, t)
 

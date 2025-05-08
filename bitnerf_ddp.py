@@ -25,9 +25,19 @@ class BitNeRFDDP(torch.nn.Module):
 
         for idx in range(num_layers):
             if idx % 4 == 0 and idx > 0:
-                layer = nn.Linear(in_features=input_dim_size + self.padded_input_dim, out_features=emb_dim, bias=True, device=device)
+                layer = nn.Linear(
+                    in_features=input_dim_size + self.padded_input_dim,
+                    out_features=emb_dim,
+                    bias=True,
+                    device=device,
+                )
             else:
-                layer = nn.Linear(in_features=input_dim_size, out_features=emb_dim, bias=True, device=device)
+                layer = nn.Linear(
+                    in_features=input_dim_size,
+                    out_features=emb_dim,
+                    bias=True,
+                    device=device,
+                )
 
             self.layers.append(layer)
 
@@ -37,7 +47,7 @@ class BitNeRFDDP(torch.nn.Module):
             in_features=input_dim_size,
             out_features=self.padded_output_dim,
             bias=True,
-            device=device
+            device=device,
         )
 
     def forward(self, x):
@@ -49,21 +59,28 @@ class BitNeRFDDP(torch.nn.Module):
                 x = torch.cat([x, inputs], dim=-1)
             x = F.relu(layer(x))
         outputs = self.output_layer(x)
-        outputs = outputs[:, :, :self.out_dim]
+        outputs = outputs[:, :, : self.out_dim]
         return outputs
 
     def render_rgb_depth(self, rays_flat, t, rand=True, train=True):
         predictions = self.forward(rays_flat)
-        predictions = torch.reshape(predictions, (-1, self.config["H"], self.config["W"], NUM_SAMPLES, 4))
+        predictions = torch.reshape(
+            predictions, (-1, self.config["H"], self.config["W"], NUM_SAMPLES, 4)
+        )
 
         rgb = torch.sigmoid(predictions[..., :-1])
         sigma = F.relu(predictions[..., -1])
 
         delta = t[..., 1:] - t[..., :-1]
-        delta = torch.cat([
-            delta,
-            torch.broadcast_to(torch.tensor(1e10, device=self.device), delta[..., :1].shape)
-        ], dim=-1)
+        delta = torch.cat(
+            [
+                delta,
+                torch.broadcast_to(
+                    torch.tensor(1e10, device=self.device), delta[..., :1].shape
+                ),
+            ],
+            dim=-1,
+        )
         if rand:
             alpha = 1.0 - torch.exp(-sigma * delta)
         else:
