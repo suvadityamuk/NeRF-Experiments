@@ -11,6 +11,7 @@ from utils import (
 )
 import imageio
 import torch
+import torch.nn as nn
 from tqdm.auto import tqdm
 import numpy as np
 from nerf import NeRF

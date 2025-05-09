@@ -11,6 +11,7 @@ from utils import (
 )
 import imageio
 import torch
+import torch.nn as nn
 from tqdm.auto import tqdm
 import numpy as np
 from bitnerf import BitNeRF
@@ -18,7 +19,6 @@ import os
 from dataset import NerfDataset
 from torchao.quantization import (
     quantize_,
-    FromIntXQuantizationAwareTrainingConfig,
     Int8DynamicActivationInt4WeightConfig,
 )
 from torchao.prototype.quantized_training import bitnet_training
@@ -199,7 +199,6 @@ def train(
                 log_video(model, epoch, main_focal)
 
     checkpoint_path = f"checkpoint_epoch_{epoch}_quantized_final.pt"
-    quantize_(model, FromIntXQuantizationAwareTrainingConfig())
     quantize_(model, Int8DynamicActivationInt4WeightConfig())
     # We train at bitnet-level, but we save in int4
     torch.save(model.state_dict(), checkpoint_path)
