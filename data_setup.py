@@ -1,11 +1,15 @@
 import numpy as np
 import os
 
+
 def install_dataset():
     """Installs the tiny NeRF dataset and required packages."""
-    os.system('wget "http://cseweb.ucsd.edu/~viscomp/projects/LF/papers/ECCV20/nerf/tiny_nerf_data.npz"')
-    os.system('pip install wandb[media] torchao -qq')
+    os.system(
+        'wget "http://cseweb.ucsd.edu/~viscomp/projects/LF/papers/ECCV20/nerf/tiny_nerf_data.npz"'
+    )
+    os.system("pip install wandb[media] torchao -qq")
     print("Dataset and packages installed.")
+
 
 raw_npz = np.load("tiny_nerf_data.npz")
 

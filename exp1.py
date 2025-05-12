@@ -192,7 +192,7 @@ def execute(config):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     set_seed(42)
-    setup_wandb(rank=0, config=config, exp_name="nerf-a100")
+    setup_wandb(rank=0, config=config, exp_name="nerf-a100-base")
 
     train_dataset = NerfDataset(
         root_path="train.npz", transform=None, target_transform=None

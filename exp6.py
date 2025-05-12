@@ -228,7 +228,7 @@ def cleanup():
 def execute(rank, world_size, config):
     setup(rank, world_size)
     set_seed(42)
-    setup_wandb(rank, config=config, exp_name="nerf-t4x2-ddp-bitnet")
+    setup_wandb(rank, config=config, exp_name="bitnerf-t4x2-ddp")
 
     train_dataset = NerfDataset(
         root_path="train.npz", transform=None, target_transform=None

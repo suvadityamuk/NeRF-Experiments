@@ -89,9 +89,9 @@ def pose_spherical(theta, phi, t):
     return c2w
 
 
-def encode_pos(x: torch.Tensor, POS_ENCODE_DIMS=16):
+def encode_pos(x: torch.Tensor, pos_encode_dims=16):
     pos = [x]
-    for i in range(POS_ENCODE_DIMS):
+    for i in range(pos_encode_dims):
         for func in [torch.sin, torch.cos]:
             pos.append(func(2.0**i * x))
     return torch.cat(pos, dim=-1)

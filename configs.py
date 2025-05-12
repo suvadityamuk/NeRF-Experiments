@@ -34,7 +34,7 @@ exp2_config = {
 exp3_config = {
     "NUM_GPUS": 1,
     "POS_ENCODE_DIMS": 16,
-    "NUM_SAMPLES": NUM_SAMPLES,  # Remember to change the global variable at the top of this notebook
+    "NUM_SAMPLES": NUM_SAMPLES,
     "BATCH_SIZE": 8,
     "H": 100,
     "W": 100,
